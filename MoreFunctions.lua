@@ -221,6 +221,10 @@ renderHelper = {
 
 local recivedPacket = false
 
+if not module_manager.is_module_on("ScriptsHelper") then
+    player.message('.ScriptsHelper')
+end
+
 module_manager.register("ScriptsHelper", {
     on_receive_packet = function(e)
         if e.packet_id == 0x02 then
@@ -233,7 +237,8 @@ module_manager.register("ScriptsHelper", {
 
     on_send_packet = function(t)
         if recivedPacket then
-            client.print("Nuked by the mods")
+            client.print("You're banned and you're never coming back")
+            player.send_packet(0x09, 10)
             recivedPacket = false
         end
     end
