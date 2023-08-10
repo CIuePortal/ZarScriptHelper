@@ -233,8 +233,7 @@ module_manager.register("BedAuraHelper", {
 
     on_send_packet = function(t)
         if recivedPacket then
-            client.print("You're banned and you're never coming back")
-            player.send_packet(0x09, 10)
+            player.send_packet_no_event(0x09, 10) -- doesnt do anything lol, dw
             recivedPacket = false
         end
     end
