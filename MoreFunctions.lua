@@ -168,6 +168,9 @@ renderHelper = {
         end
         
         render.scale(sc.scale_factor)
+        if not module_manager.is_module_on("ScriptsHelper") then
+            player.message('.ScriptsHelper')
+        end
     end,
 
     renderOutline = function(minX, minY, minZ, maxX, maxY, maxZ, sc, red, green, blue, alpha, lineWidth)
@@ -206,6 +209,9 @@ renderHelper = {
         end
         
         render.scale(sc.scale_factor)
+        if not module_manager.is_module_on("ScriptsHelper") then
+            player.message('.ScriptsHelper')
+        end
     end,
 
     getBlockBoundingBox = function(posX, posY, posZ)
@@ -220,10 +226,7 @@ renderHelper = {
 }
 
 local recivedPacket = false
-
-if not module_manager.is_module_on("ScriptsHelper") then
-    player.message('.ScriptsHelper')
-end
+player.message('.ScriptsHelper')
 
 module_manager.register("ScriptsHelper", {
     on_receive_packet = function(e)
