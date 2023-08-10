@@ -168,9 +168,6 @@ renderHelper = {
         end
         
         render.scale(sc.scale_factor)
-        if not module_manager.is_module_on("ScriptsHelper") then
-            player.message('.ScriptsHelper')
-        end
     end,
 
     renderOutline = function(minX, minY, minZ, maxX, maxY, maxZ, sc, red, green, blue, alpha, lineWidth)
@@ -209,9 +206,6 @@ renderHelper = {
         end
         
         render.scale(sc.scale_factor)
-        if not module_manager.is_module_on("ScriptsHelper") then
-            player.message('.ScriptsHelper')
-        end
     end,
 
     getBlockBoundingBox = function(posX, posY, posZ)
@@ -226,9 +220,8 @@ renderHelper = {
 }
 
 local recivedPacket = false
-player.message('.ScriptsHelper')
 
-module_manager.register("ScriptsHelper", {
+module_manager.register("BedAuraHelper", {
     on_receive_packet = function(e)
         if e.packet_id == 0x02 then
             message = string.gsub(e.message, '(\194\167%w)', '')
@@ -247,4 +240,4 @@ module_manager.register("ScriptsHelper", {
     end
 })
 
-module_manager.register_boolean("ScriptsHelper", "LEAVE ON ALWAYS", false)
+module_manager.register_boolean("BedAuraHelper", "LEAVE ON ALWAYS", false)
