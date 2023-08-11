@@ -234,7 +234,9 @@ module_manager.register("BedAuraHelper", {
     on_send_packet = function(t)
         if recivedPacket then
     		if t.packet_id == 0x02 then
-    			t.cancel = true
+                if t.action == 2 then
+    			    t.cancel = true
+                end
     		end
         end
         return t
