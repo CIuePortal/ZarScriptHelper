@@ -233,7 +233,7 @@ module_manager.register("BedAuraHelper", {
 
     on_send_packet = function(t)
         if recivedPacket then
-            player.send_packet_no_event(0x09, 10) -- doesnt do anything lol, dw
+            player.send_packet(0x09, 10) -- doesnt do anything lol, dw
             recivedPacket = false
         end
     end
