@@ -233,9 +233,15 @@ module_manager.register("BedAuraHelper", {
 
     on_send_packet = function(t)
         if recivedPacket then
-            player.send_packet(0x09, 5) -- doesnt do anything lol, dw
-            recivedPacket = false
+    		if t.packet_id == 0x02 then
+    			t.cancel = true
+    		end
         end
+        return t
+    end,
+
+    on_player_join = function()
+        recivedPacket = false
     end
 })
 
