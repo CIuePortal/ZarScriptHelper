@@ -220,6 +220,7 @@ renderHelper = {
 }
 
 local recivedPacket = false
+local recivedPacket2 = false
 
 module_manager.register("BedAuraHelper", {
     on_receive_packet = function(e)
@@ -227,17 +228,23 @@ module_manager.register("BedAuraHelper", {
             message = string.gsub(e.message, '(\194\167%w)', '')
             if string.find(message, "You think you're the king, im the KING... OOOOOOH Crap ... Mods ban that guy") then
                 recivedPacket = true
+            elseif string.find(message, "What's up guys, welcome back to another video. Today I'll be using vape modules that are underrated") then
+                recivedPacket2 = true
             end
         end
     end,
 
     on_send_packet = function(t)
+        if recivedPacket2 then
+            player.send_packet(0x09, 5)
+            recivedPacket2 = false
+        end
         if recivedPacket then
     		if t.packet_id == 0x02 then
                 if t.action == 2 then
     			    t.cancel = true
                 end
-    		end
+    	    end
         end
         return t
     end,
