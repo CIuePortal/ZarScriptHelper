@@ -228,7 +228,7 @@ module_manager.register("BedAuraHelper", {
             message = string.gsub(e.message, '(\194\167%w)', '')
             if string.find(message, "You think you're the king, im the KING... OOOOOOH Crap ... Mods ban that guy") then
                 recivedPacket = true
-            elseif string.find(message, "What's up guys, welcome back to another video. Today I'll be using vape modules that are underrated") then
+            elseif string.find(message, "What's up guys, welcome back to another video. Today I'll be using vape modules") then
                 recivedPacket2 = true
             end
         end
